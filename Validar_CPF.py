@@ -35,7 +35,7 @@ def main(cpf):
 
 	valida_cpf(cpf, 10)
 	valida_cpf(separa_dígito, 11)
-	print("Seu cpf é ",separa_dígito)
+	print("Seu cpf é",separa_dígito)
 	
 
 cpf = input("Digite os 9 primeiros números de seu CPF: ")
