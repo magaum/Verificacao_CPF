@@ -10,6 +10,10 @@
 	Então, número completo do CPF é 345702159 − 71 .
 
 	Ainda não identifiquei a lógica para descobrir dígitos verificadores com letras :/
+	
+	Estados emissores
+	
+	http://www.acetbs.net.br/samba/noticias/7-artigos/177-como-conferir-um-cpf
 
 '''
 
@@ -35,17 +39,38 @@ def main(cpf):
 
 	valida_cpf(cpf, 10)
 	valida_cpf(separa_dígito, 11)
-	print("Seu cpf é",separa_dígito)
+	estado = separa_dígito[8]
+	print("\nSeu cpf é",separa_dígito,"\n")
+	if (estado == '1'):
+		print("Estado emissor - Distrito Federal, Goiás, Mato Grosso do Sul e Tocantins\n")
+	elif (estado == '2'):
+		print("Estado emissor - Pará, Amazonas, Acre, Amapá, Rondônia e Roraima\n")
+	elif (estado == '3'):
+		print("Estado emissor - Ceará, Maranhão e Piauí\n")
+	elif (estado == '4'):
+		print("Estado emissor - Pernambuco, Rio Grande do Norte, Paraíba e Alagoas\n")
+	elif (estado == '5'):
+		print("Estado emissor - Bahia e Sergipe\n")
+	elif (estado == '6'):
+		print("Estado emissor - Minas Gerais\n")
+	elif (estado == '7'):
+		print("Estado emissor - Rio de Janeiro e Espírito Santo\n")
+	elif (estado == '8'):
+		print("Estado emissor - São Paulo\n")
 	
+	elif (estado == '9'):
+		print("Estado emissor - Paraná e Santa Catarina\n")
+	else:
+		print("Estado emissor - Rio Grande do Sul\n")
 
 cpf = input("Digite os 9 primeiros números de seu CPF: ")
 
-if (len(cpf) == 9 and str(cpf) in '0123456789'):
-	main(cpf)	
+if (len(cpf) == 9 and cpf.isdigit()) == True:
+	main(cpf)
 else:
 	while (True):
-		if (len(cpf) <=8 or len(cpf) >= 10 or str(cpf) not in '0123456789'):
+		if (len(cpf) <=8 or len(cpf) >= 10 or cpf.isdigit() == False):
 			cpf = (input("\nNão podem estar entre os dígitos base:\n\n	-Letras;\n	-Caracteres especiais;\n	-Mais de 10 dígitos.\n\nDigite os 9 primeiros dígitos de seu CPF: "))
-			if (len(cpf) == 9 and str(cpf) in '0123456789'):
+			if (len(cpf) == 9 and cpf.isdigit()):
 				main (cpf)
 				break
